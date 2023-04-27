@@ -4,6 +4,7 @@ import { getClientIp } from "request-ip";
 config();
 
 const app = express();
+const router = express.Router();
 
 app.set("trust proxy", true);
 
@@ -17,6 +18,8 @@ app.use("/", (req, res) => {
     getClientIp(req)
   );
 });
+
+router.get("/api", () => console.log("algo"));
 const port = process.env.PORT;
 app.listen(port, () => {
   console.log("listen on port", port);
