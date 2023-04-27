@@ -1,4 +1,6 @@
+import { config } from "dotenv";
 import express from "express";
+config();
 
 const app = express();
 
@@ -11,7 +13,7 @@ app.use("/", (req, res) => {
     req.headers.forwarded
   );
 });
-const port = 5400;
+const port = process.env.PORT;
 app.listen(port, () => {
   console.log("listen on port", port);
 });
