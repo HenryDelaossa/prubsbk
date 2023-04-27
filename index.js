@@ -1,5 +1,6 @@
 import { config } from "dotenv";
 import express from "express";
+import { getClientIp } from "request-ip";
 config();
 
 const app = express();
@@ -11,7 +12,9 @@ app.use("/", (req, res) => {
     "ip=>",
     req.header("x-forwarded-for"),
     "socket port=>",
-    req.socket.localAddress
+    req.socket.remoteAddress,
+    "requestIp",
+    getClientIp(req)
   );
 });
 const port = process.env.PORT;
