@@ -7,7 +7,12 @@ const app = express();
 app.set("trust proxy", true);
 
 app.use("/", (req, res) => {
-  console.log("ip=>", req.header("x-forwarded-for"), req.headers.forwarded);
+  console.log(
+    "ip=>",
+    req.header("x-forwarded-for"),
+    "socket port=>",
+    req.socket.localAddress
+  );
 });
 const port = process.env.PORT;
 app.listen(port, () => {
