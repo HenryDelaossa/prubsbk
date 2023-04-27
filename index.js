@@ -19,7 +19,8 @@ app.use("/", (req, res) => {
   );
 });
 
-router.get("/api", () => console.log("algo"));
+router.use("/api", router);
+router.get("/ex", () => console.log("algo"));
 const port = process.env.PORT;
 app.listen(port, () => {
   console.log("listen on port", port);
