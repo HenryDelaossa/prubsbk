@@ -4,14 +4,10 @@ config();
 
 const app = express();
 
+app.set("trust proxy", true);
+
 app.use("/", (req, res) => {
-  console.log(
-    "ip=>",
-    req.socket.localAddress,
-    req.connection.remoteAddress,
-    req.headers.connection,
-    req.headers.forwarded
-  );
+  console.log("ip=>", req.header("x-forwarded-for"), req.headers.forwarded);
 });
 const port = process.env.PORT;
 app.listen(port, () => {
