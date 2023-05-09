@@ -15,7 +15,7 @@ router.get("/ip", (req, res) => {
 
 router.get("/finger", (req, res) => {
   try {
-    console.log("finger", req.idDevice);
+    console.log("finger", req.headers.idDevice);
     res.status(200).send({ message: req.idDevice });
   } catch (error) {
     console.log("error.message=>", error.message, "error=>", error);
